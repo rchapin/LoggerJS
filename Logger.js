@@ -1,17 +1,17 @@
 /**********************************************************************/
-/*   Copyright (c) 2013, Ryan Chapin, http://www.ryanchapin.com       */
-/*   All rights reserved.                                             */
+/*   Copyright (c) 2013, Ryan Chapin, http://www.ryanchapin.com	      */
+/*   All rights reserved.					      */
 /*                                                                    */
 /*   Redistribution  and  use  in  source  and binary forms, with or  */
 /*   without modification, are permitted provided that the following  */
-/*   conditions are met:                                              */
+/*   conditions are met:					      */
 /*                                                                    */
 /* - Redistributions  of source code must retain the above copyright  */
 /*   notice, this list of conditions and the following disclaimer.    */
 /* - Redistributions   in  binary  form  must  reproduce  the  above  */
 /*   copyright  notice,  this  list  of conditions and the following  */
 /*   disclaimer in the documentation and/or other materials provided  */
-/*   with the distribution.                                           */
+/*   with the distribution.					      */
 /* - Neither   the  name  of  Ryan  Chapin  nor  the  names  of  its  */
 /*   contributors may be used to endorse or promote products derived  */
 /*   from this software without specific prior written permission.    */
@@ -29,11 +29,12 @@
 /*   LIABILITY,  WHETHER  IN  CONTRACT,  STRICT  LIABILITY,  OR TORT  */
 /*   (INCLUDING  NEGLIGENCE  OR OTHERWISE) ARISING IN ANY WAY OUT OF  */
 /*   THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF  */
-/*   SUCH DAMAGE.                                                     */
+/*   SUCH DAMAGE.						      */
 /*                                                                    */
-/*   version: 1.0                                                     */
+/*   version: 1.0						      */
 /*                                                                    */
 /**********************************************************************/
+
 
 /**
  * Constructor
@@ -456,7 +457,36 @@ com.ryanchapin.logger.Logger.prototype.outputLogMessage = function(logMessage, l
 
 	//
 	// Output the log message to the log window.
+	// In this case, we will insert it at the top of the list
+	// of existing elements in our DOM container.
 	//
+	// Get a list of all of the elements in the div
+	//
+	/*
+	var $contentToAppend = new Object('<p class="' + $logLevelName + '">' +
+		'DATE: ' + this.getDate() + ' ' +
+		'(' + this.getInstanceName() + ') ' +
+		'[' + $logLevelName + '] - ' +
+		logMessage +
+		'</p>');
+	var $elements = $logOutputDivRef.getElementsByTagName('p');
+	var $firstElement = $elements[0];
+	$logOutputDivRef.insertBefore($contentToAppend, $firstElement);
+	*/
+
+	/*
+	var $newElem = document.createElement('p');
+	$newElem.className = $logLevelName;
+	$newElem.innerHTML = 'DATE: ' + this.getDate() + ' ' +
+		'(' + this.getInstanceName() + ') ' +
+		'[' + $logLevelName + '] - ' +
+		logMessage;
+	// $logOutputDivRef.insertBefore($newElem, $logOutputDivRef.firstChild);
+	$logOutputDivRef.insertBefore($newElem, ($logOutputDivRef.hasChildNodes()) ? $logOutputDivRef.childNodes[0]:'undefined');
+
+// LEFT OFF, still messed up in IE.
+	*/
+
 	$(eval($logOutputDivRef)).prepend(
 		'<p class="' + $logLevelName + '">' +
 		'DATE: ' + this.getDate() + ' ' +
