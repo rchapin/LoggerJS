@@ -45,6 +45,11 @@ com.ryanchapin.logger.Logger = function (instanceName) {
 
 	this.instanceName = instanceName;
 
+	//
+	// Set the logLevel to a default value
+	//
+	this.setLogLevel('DEBUG');
+
 };
 
 
