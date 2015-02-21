@@ -1,59 +1,60 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
+   <head>
 
-		<meta charset="utf-8">
-		<title>Logger.js Example</title>
+      <meta charset="utf-8">
+      <title>Logger.js Example</title>
 
-		<!-- The 1.0 version requires jquery-1.7 or better -->
-		<script src="jquery/jquery-1.8.2.js" type="text/javascript"></script>
+      <!-- The 1.0 version requires jquery-1.7 or better -->
+      <!--
+      <script src="jquery/jquery-1.8.2.js" type="text/javascript"></script>
+      -->
 
-	       	<script type="text/javascript">
-
-			//
-			// Instantiate the 'namespace' container object
-			//
-			var com = new Object();
-			com.ryanchapin = new Object()
-			com.ryanchapin.logger = new Object();
-		</script>
-
-
-		<script src="Logger.js" type="text/javascript"></script>
+      <script type="text/javascript">
+         //
+         // Instantiate the 'namespace' container object
+         //
+         var com = new Object();
+         com.ryanchapin = new Object()
+         com.ryanchapin.logger = new Object();
+      </script>
 
 
-		<script type="text/javascript">
+      <script src="Logger.js" type="text/javascript"></script>
 
-			var $logger = new com.ryanchapin.logger.Logger("Test Logger");
-			$logger.setLogLevel('TRACE');
-			$logger.trace('This is a TRACE message');
-			$logger.debug('This is a DEBUG message');
-			$logger.info('This is a INFO message');
-			$logger.warn('This is a WARN message');
-			$logger.error('This is a ERROR message');
-			$logger.fatal('This is a FATAL message');
 
-			function addDebugMsg() {
-				var inputField = document.getElementById('msg');
-				$logger.debug(inputField.value);
-			}
+      <script type="text/javascript">
 
-		</script>
+         var $logger = new com.ryanchapin.logger.Logger("Test Logger");
+         $logger.setLogLevel('TRACE');
+         $logger.trace('This is a TRACE message');
+         $logger.debug('This is a DEBUG message');
+         $logger.info('This is a INFO message');
+         $logger.warn('This is a WARN message');
+         $logger.error('This is a ERROR message');
+         $logger.fatal('This is a FATAL message');
 
-	</head>
+         function addDebugMsg() {
+            var inputField = document.getElementById('msg');
+            $logger.debug(inputField.value);
+         }
 
-	<body>
+      </script>
 
-		<h1>Logger.js Sample</h1>
+   </head>
 
-		<p>This is a demonstration of the Logger.js JavaScript logging implementation</p>
+   <body>
 
-		<form action="#" method="post">
-			<input id="msg" type="text" name="msg"/>
-			<input type="button" value="Add another debug message" onclick="addDebugMsg();"/>
-		</form>
+      <h1>Logger.js Sample</h1>
 
-	</body>	
+      <p>This is a demonstration of the Logger.js JavaScript logging implementation</p>
+
+      <form action="#" method="post">
+         <input id="msg" type="text" name="msg"/>
+         <input type="button" value="Add another debug message" onclick="addDebugMsg();"/>
+      </form>
+
+   </body>   
 
 </html>

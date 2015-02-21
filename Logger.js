@@ -1,17 +1,17 @@
 /**********************************************************************/
-/*   Copyright (c) 2013, Ryan Chapin, http://www.ryanchapin.com	      */
-/*   All rights reserved.					      */
+/*   Copyright (c) 2013, Ryan Chapin, http://www.ryanchapin.com       */
+/*   All rights reserved.                                             */
 /*                                                                    */
 /*   Redistribution  and  use  in  source  and binary forms, with or  */
 /*   without modification, are permitted provided that the following  */
-/*   conditions are met:					      */
+/*   conditions are met:                                              */
 /*                                                                    */
 /* - Redistributions  of source code must retain the above copyright  */
 /*   notice, this list of conditions and the following disclaimer.    */
 /* - Redistributions   in  binary  form  must  reproduce  the  above  */
 /*   copyright  notice,  this  list  of conditions and the following  */
 /*   disclaimer in the documentation and/or other materials provided  */
-/*   with the distribution.					      */
+/*   with the distribution.                                           */
 /* - Neither   the  name  of  Ryan  Chapin  nor  the  names  of  its  */
 /*   contributors may be used to endorse or promote products derived  */
 /*   from this software without specific prior written permission.    */
@@ -29,26 +29,25 @@
 /*   LIABILITY,  WHETHER  IN  CONTRACT,  STRICT  LIABILITY,  OR TORT  */
 /*   (INCLUDING  NEGLIGENCE  OR OTHERWISE) ARISING IN ANY WAY OUT OF  */
 /*   THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF  */
-/*   SUCH DAMAGE.						      */
-/*                                                                    */
-/*   version: 1.0						      */
+/*   SUCH DAMAGE.                                                     */
 /*                                                                    */
 /**********************************************************************/
-
+/*   version: 1.1                                                     */
+/**********************************************************************/
 
 /**
  * Constructor
  *
- * @param	string, name to be output in the log window for each Logger instance.
+ * @param   string, name to be output in the log window for each Logger instance.
  */ 
 com.ryanchapin.logger.Logger = function (instanceName) {
 
-	this.instanceName = instanceName;
+   this.instanceName = instanceName;
 
-	//
-	// Set the logLevel to a default value
-	//
-	this.setLogLevel('DEBUG');
+   //
+   // Set the logLevel to a default value
+   //
+   this.setLogLevel('DEBUG');
 
 };
 
@@ -82,38 +81,40 @@ com.ryanchapin.logger.Logger.prototype.logWindowConfig.height = 400;
 com.ryanchapin.logger.Logger.prototype.logWindowConfig.logOutputDiv = 'logOutput';
 
 com.ryanchapin.logger.Logger.prototype.logWindowConfig.css =
-	'<style>' +
-	'body { font-family: Verdana, Arial, "sans-serif"; }' +
-	'h1 {font-size: 1.25em;}' +
-	'p { margin: 0; padding: 0; }' +
-	'p.TRACE { color:#757575; }' +
-	'p.DEBUG{ }' +
-	'p.INFO{ font-style:italic; }' +
-	'p.WARN{ font-weight:bold; }' +
-	'p.ERROR{ color:#c20000; }' +
-	'p.FATAL{ color:#c20000; font-style:italic; font-weight:bold; }' +
-	'</style>';
+   '<style>' +
+   'body { font-family: Verdana, Arial, "sans-serif"; }' +
+   'h1 {font-size: 1.25em;}' +
+   'p { margin: 0; padding: 0; }' +
+   'p.TRACE { color:#757575; }' +
+   'p.DEBUG{ }' +
+   'p.INFO{ font-style:italic; }' +
+   'p.WARN{ font-weight:bold; }' +
+   'p.ERROR{ color:#c20000; }' +
+   'p.FATAL{ color:#c20000; font-style:italic; font-weight:bold; }' +
+   '</style>';
 
 com.ryanchapin.logger.Logger.prototype.logWindowConfig.js =
-	'<' + 'script type="text/javascript"' + '>' +
-	'function clearLogOutput() {' +
-	'document.getElementById(\'' + com.ryanchapin.logger.Logger.prototype.logWindowConfig.logOutputDiv + '\').innerHTML=\'\';' +
-	'}' +
-	'</' + 'script' + '>';
+   '<' + 'script type="text/javascript"' + '>' +
+   'function clearLogOutput() {' +
+   'document.getElementById(\'' +
+   com.ryanchapin.logger.Logger.prototype.logWindowConfig.logOutputDiv +
+   '\').innerHTML=\'\';' +
+   '}' +
+   '</' + 'script' + '>';
 
 com.ryanchapin.logger.Logger.prototype.logWindowConfig.html = 
-	'<!DOCTYPE html>' +
-	'<head>' +
-	com.ryanchapin.logger.Logger.prototype.logWindowConfig.js +
-	com.ryanchapin.logger.Logger.prototype.logWindowConfig.css +
-	'<title>Logger.js Output</title>' +
-	'</head>' +
-	'<body>' +
-	'<h1>Logger.js Output</h1>' +
-	'<p><a href="" onclick="clearLogOutput(); return false;">Clear Log Output</a></p>' +
-	'<div id="' + com.ryanchapin.logger.Logger.prototype.logWindowConfig.logOutputDiv + '"></div>' +
-	'</body>' +
-	'</html>';
+   '<!DOCTYPE html>' +
+   '<head>' +
+   com.ryanchapin.logger.Logger.prototype.logWindowConfig.js +
+   com.ryanchapin.logger.Logger.prototype.logWindowConfig.css +
+   '<title>Logger.js Output</title>' +
+   '</head>' +
+   '<body>' +
+   '<h1>Logger.js Output</h1>' +
+   '<p><a href="" onclick="clearLogOutput(); return false;">Clear Log Output</a></p>' +
+   '<div id="' + com.ryanchapin.logger.Logger.prototype.logWindowConfig.logOutputDiv + '"></div>' +
+   '</body>' +
+   '</html>';
 
 com.ryanchapin.logger.Logger.prototype.logWindowConfig.logWindowName = 'output';
 
@@ -124,20 +125,19 @@ com.ryanchapin.logger.Logger.prototype.logWindowConfig.logWindowName = 'output';
 com.ryanchapin.logger.Logger.prototype.logLevel = null;
 
 
-
 /**
  * Logging levels
  */
 com.ryanchapin.logger.Logger.prototype.logLevels = {
-	'UNKNOWN': -1,
-	'OFF'	 : 0,
-	'ALL'	 : 1,
-	'TRACE'	 : 2,
-	'DEBUG'	 : 3,
-	'INFO'	 : 4,
-	'WARN' 	 : 5,
-	'ERROR'	 : 6,
-	'FATAL'	 : 7
+   'UNKNOWN': -1,
+   'OFF'    : 0,
+   'ALL'    : 1,
+   'TRACE'  : 2,
+   'DEBUG'  : 3,
+   'INFO'   : 4,
+   'WARN'   : 5,
+   'ERROR'  : 6,
+   'FATAL'  : 7
 };
 
 
@@ -152,16 +152,12 @@ com.ryanchapin.logger.Logger.prototype.ieVersion = null;
 //
 
 com.ryanchapin.logger.Logger.prototype.getInstanceName = function() {
-
-	return this.instanceName;
-
+   return this.instanceName;
 };
 
 
 com.ryanchapin.logger.Logger.prototype.getLogLevel = function () {
-
-	return this.logLevel;
-
+   return this.logLevel;
 };
 
 
@@ -170,24 +166,24 @@ com.ryanchapin.logger.Logger.prototype.getLogLevel = function () {
  */
 com.ryanchapin.logger.Logger.prototype.getLogLevelName = function (logLevel) {
 
-	var $returnValue;
+   var $returnValue;
 
-	//
-	// Iterate through the logLevels enums and search for a matching key
-	//
-	for (var $key in this.logLevels) {
-	
-		if (this.logLevels[$key] == logLevel) {
-			$returnValue = $key;
-			break;
-		} 
-	}
+   //
+   // Iterate through the logLevels enums and search for a matching key
+   //
+   for (var $key in this.logLevels) {
+   
+      if (this.logLevels[$key] == logLevel) {
+         $returnValue = $key;
+         break;
+      } 
+   }
 
-	if ($returnValue === 'undefined' || $returnValue === null) {
-		$returnValue = 'UNKNOWN';
-	}
+   if ($returnValue === 'undefined' || $returnValue === null) {
+      $returnValue = 'UNKNOWN';
+   }
 
-	return $returnValue;
+   return $returnValue;
 
 };
 
@@ -196,48 +192,37 @@ com.ryanchapin.logger.Logger.prototype.getLogLevelName = function (logLevel) {
  * Sets the logLevel property to the int value of the logLevel enum
  */
 com.ryanchapin.logger.Logger.prototype.setLogLevel = function (logLevel) {
-
-	this.logLevel = this.logLevels[logLevel];
-
+   this.logLevel = this.logLevels[logLevel];
 };
 
 
 com.ryanchapin.logger.Logger.prototype.getLogOutputWindowReference = function () {
-
-	return this.logOutputWindowReference;
+   return this.logOutputWindowReference;
 };
 
 
 com.ryanchapin.logger.Logger.prototype.setLogOutputWindowReference = function (logOutputWindowReference) {
-
-	this.logOutputWindowReference = logOutputWindowReference;
-
+   this.logOutputWindowReference = logOutputWindowReference;
 };
 
 
 
 com.ryanchapin.logger.Logger.prototype.getLogWindowConfig = function() {
-
-	return this.logWindowConfig;
-
+   return this.logWindowConfig;
 };
 
 
 com.ryanchapin.logger.Logger.prototype.getLogWindowName = function () {
-
-	return this.logWindowConfig.logWindowName;
-
+   return this.logWindowConfig.logWindowName;
 };
 
 
 com.ryanchapin.logger.Logger.prototype.isLogOutputWindowOpen = function () {
-	
-	if (typeof(this.logOutputWindowReference) === 'undefined' || this.logOutputWindowReference === null) {
-		return false;
-	}
-
-	return !this.logOutputWindowReference.closed;
-
+   if (typeof(this.logOutputWindowReference) === 'undefined' ||
+       this.logOutputWindowReference === null) {
+      return false;
+   }
+   return !this.logOutputWindowReference.closed;
 };
 
 
@@ -246,86 +231,86 @@ com.ryanchapin.logger.Logger.prototype.isLogOutputWindowOpen = function () {
 //
 
 /**
+ * FIXME:  This is currently broken and does not work properly
+ *
  * Will return the current version of IE.
  *
  * This is based on a script seen on Stack Overflow regarding object detection
  * for Internet Explorer written by James Padolsy: http://james.padolsey.com/
  *
- * @return	int, indicating the version of IE being used.  If a non IE
- *		browser, returns 0.
+ * @return   int, indicating the version of IE being used.  If a non IE
+ *           browser, returns 0.
  */
 com.ryanchapin.logger.Logger.prototype.getIeVersion = function() {
-	
-	if (typeof(this.ieVersion) !== 'undefined' && this.ieVersion === 0) {
-		return 0;
-	}
+   
+   if (typeof(this.ieVersion) !== 'undefined' && this.ieVersion === 0) {
+      return 0;
+   }
 
-	if (typeof(this.ieVersion) === 'undefined' || this.ieVersion === null) {
-		var $version = 3;
-		var $div = document.createElement('div');
-		var $all = $div.getElementsByTagName('i');
-		var $continue = true;
+   if (typeof(this.ieVersion) === 'undefined' || this.ieVersion === null) {
+      var $version = 3;
+      var $div = document.createElement('div');
+      var $all = $div.getElementsByTagName('i');
+      var $continue = true;
 
-		while ($continue) {
-			$version++;
-			$div.innerHTML = '<!--[if gt IE ' + $version + ']><i></i><![endif]-->';
-			$all[0];
+      while ($continue) {
+         $version++;
+         $div.innerHTML = '<!--[if gt IE ' + $version + ']><i></i><![endif]-->';
+         $all[0];
 
-			if ($div.innerHTML !== '' && $all[0] !== 'undefined') {
-				$continue = false;
-			}
+         if ($div.innerHTML !== '' && $all[0] !== 'undefined') {
+            $continue = false;
+         }
 
-		}
-		this.ieVersion = ($version > 4) ? $version : 0;
-
-	}
-	return this.ieVersion;
+      }
+      this.ieVersion = ($version > 4) ? $version : 0;
+   }
+   return this.ieVersion;
 };
 
 
 com.ryanchapin.logger.Logger.prototype.getDate = function() {
-	
-	var $now = new Date();
+   
+   var $now = new Date();
 
-	var $year	= $now.getFullYear();
-	var $month	= this.leftPad($now.getMonth(),2);
-	var $day	= this.leftPad($now.getDay(),2);
-	var $hour	= this.leftPad($now.getHours(),2);
-	var $min	= this.leftPad($now.getMinutes(),2);
-	var $sec	= this.leftPad($now.getSeconds(),2);
-	var $milli	= this.leftPad($now.getMilliseconds(),3);
+   var $year  = $now.getFullYear();
+   var $month = this.leftPad($now.getMonth(),2);
+   var $day   = this.leftPad($now.getDay(),2);
+   var $hour  = this.leftPad($now.getHours(),2);
+   var $min   = this.leftPad($now.getMinutes(),2);
+   var $sec   = this.leftPad($now.getSeconds(),2);
+   var $milli = this.leftPad($now.getMilliseconds(),3);
 
-	return $year + '-' + $month + '-' + $day + ' ' + $hour + ':' + $min + ':' + $sec + ':' + $milli;
+   return $year + '-' + $month + '-' + $day + ' ' + $hour + ':' + $min + ':' + $sec + ':' + $milli;
 };
 
 
 com.ryanchapin.logger.Logger.prototype.leftPad = function(input, digits) {
 
-	var $val;
-	var $pad;
+   var $val;
+   var $pad;
 
-	switch (digits) {
+   switch (digits) {
 
-	case 3:
-		if (input < 10) {
-			$val = 10;
-			$pad = '00';
-	   		break;
-		}
-		if (input < 100) {
-			$val = 100;
-			$pad = '0';
-			break;
-		}
+   case 3:
+      if (input < 10) {
+         $val = 10;
+         $pad = '00';
+            break;
+      }
+      if (input < 100) {
+         $val = 100;
+         $pad = '0';
+         break;
+      }
 
-	case 2: default:
-		$val = 10;
-		$pad = '0';
-		break;
-	}
+   case 2: default:
+      $val = 10;
+      $pad = '0';
+      break;
+   }
 
- 	return input < $val ? $pad + input : input;
-
+    return input < $val ? $pad + input : input;
 };
 
 // ----------------------------------------------------------------------------
@@ -336,99 +321,91 @@ com.ryanchapin.logger.Logger.prototype.leftPad = function(input, digits) {
  * Determines if a log message of a given logLevel setting is appropriate given
  * the existing this.logLevel setting.
  *
- * @param	int, 
- * @return	boolean, whether we should output the log message
+ * @param   int, 
+ * @return  boolean, whether we should output the log message
  */
 com.ryanchapin.logger.Logger.prototype.shouldOutputLogMessage= function (logLevel) {
+   if (this.getLogLevel() == this.logLevel['OFF']) {
+      return false;
+   }
 
-
-	if (this.getLogLevel() == this.logLevel['OFF']) {
-		return false;
-	}
-
-	if (this.getLogLevel() == this.logLevel['ALL'] || this.getLogLevel() <= logLevel) {
-		return true;
-	} else {
-		return false;
-	}
-
-
+   if (this.getLogLevel() == this.logLevel['ALL'] || this.getLogLevel() <= logLevel) {
+      return true;
+   } else {
+      return false;
+   }
 };
 
 
 /**
  * Determines whether or not the logLevel is set at a level between ALL and DEBUG
  *
- * @return	boolean, indicating whether the log level is set between ALL and DEBUG
+ * @return   boolean, indicating whether the log level is set between ALL and DEBUG
  */
 com.ryanchapin.logger.Logger.prototype.isDebugEnabled = function () {
 
-	var $returnValue = false;
+   var $returnValue = false;
 
-	if (this.getLogLevel() >= this.logLevels['ALL'] && this.getLogLevel() <= this.logLevels['DEBUG']) {
-		$returnValue = true;
-	}
-
-	return $returnValue;
-
+   if (this.getLogLevel() >= this.logLevels['ALL'] && this.getLogLevel() <= this.logLevels['DEBUG']) {
+      $returnValue = true;
+   }
+   return $returnValue;
 };
 
 
 com.ryanchapin.logger.Logger.prototype.openLogOutputWindow = function () {
 
-	this.getIeVersion();
+   this.getIeVersion();
 
-	//
-	// Make sure that we have not already opened a log output window
-	//
-	if (!this.isLogOutputWindowOpen()) {
+   //
+   // Make sure that we have not already opened a log output window
+   //
+   if (!this.isLogOutputWindowOpen()) {
 
-		//
-		// Determine if we can name the window based on the version
-		// of IE that we might be using.
-		//
-		var $ieVersion = this.getIeVersion();
-		var $windowName = $ieVersion > 0 ? '_blank' : this.getLogWindowName();
+      //
+      // Determine if we can name the window based on the version
+      // of IE that we might be using.
+      //
+      var $ieVersion = this.getIeVersion();
+      var $windowName = $ieVersion > 0 ? '_blank' : this.getLogWindowName();
 
-		//
-		// Open a new window if there is not already one with the
-		// same window name
-		//
-		var $logOutputWindow = window.open(
-			'',
-			$windowName,
-			'width='	+ this.logWindowConfig.width +
-			',height='	+ this.logWindowConfig.height +
-			',menubar=0' 	+
-			',toolbar=1'	+
-			',status=0'	+
-			',scrollbars=1'	+
-			',resizable=1');
+      //
+      // Open a new window if there is not already one with the
+      // same window name
+      //
+      var $logOutputWindow = window.open(
+         '',
+         $windowName,
+         'width='        + this.logWindowConfig.width  +
+         ',height='      + this.logWindowConfig.height +
+         ',menubar=0'    +
+         ',toolbar=1'    +
+         ',status=0'     +
+         ',scrollbars=1' +
+         ',resizable=1');
 
-		//
-		// Check to see if we were able to open a window
-		//
-		if ($logOutputWindow === 'undefined' || $logOutputWindow === null) {
-			return;
-		}
+      //
+      // Check to see if we were able to open a window
+      //
+      if ($logOutputWindow === 'undefined' || $logOutputWindow === null) {
+         return;
+      }
 
-		this.setLogOutputWindowReference($logOutputWindow);
+      this.setLogOutputWindowReference($logOutputWindow);
 
-		//
-		// Insert the HTML markup, CSS, and JavaScript into the logOutputWindow
-		// only if we have not yet already added the markup to window
-		//
-		var $logOutputDivId = $logOutputWindow.document.getElementById(this.logWindowConfig.logOutputDiv);
+      //
+      // Insert the HTML markup, CSS, and JavaScript into the logOutputWindow
+      // only if we have not yet already added the markup to window
+      //
+      var $logOutputDivId = $logOutputWindow.document.getElementById(this.logWindowConfig.logOutputDiv);
 
-		if ($logOutputDivId === 'undefined' || $logOutputDivId === null) {
-			
-			//
-			// Add the HTML markup skeleton to the logOutputWindow
-			//
-			$logOutputWindow.document.writeln(this.logWindowConfig.html);
-
-		}
-	}
+      if ($logOutputDivId === 'undefined' || $logOutputDivId === null) {
+         //
+         // Add the HTML markup skeleton to the logOutputWindow
+         //
+         $logOutputWindow.document.writeln(this.logWindowConfig.html);
+      }
+   }
 };
 
 
@@ -437,68 +414,85 @@ com.ryanchapin.logger.Logger.prototype.openLogOutputWindow = function () {
  */
 com.ryanchapin.logger.Logger.prototype.outputLogMessage = function(logMessage, logLevel) {
 
-	this.openLogOutputWindow();
+   this.openLogOutputWindow();
 
-	//
-	// Get a reference to the log output window
-	//
-	var $logOutputWindowRef = this.getLogOutputWindowReference();
+   //
+   // Get a reference to the log output window
+   //
+   var $logOutputWindowRef = this.getLogOutputWindowReference();
 
-	//
-	// Get a reference to the div into which we will be entering content in
-	// the log output window.
-	//
-	var $logOutputDivRef = $logOutputWindowRef.document.getElementById(this.logWindowConfig.logOutputDiv);
+   //
+   // Get a reference to the div into which we will be entering content in
+   // the log output window.
+   //
+   var $logOutputDivRef = $logOutputWindowRef.document.getElementById(this.logWindowConfig.logOutputDiv);
 
-	//
-	// The String representation of the logLevel argument
-	//
-	var $logLevelName = this.getLogLevelName(logLevel);
+   //
+   // The String representation of the logLevel argument
+   //
+   var $logLevelName = this.getLogLevelName(logLevel);
 
-	//
-	// Generate a Date String to output
-	//
-	var $now = new Date();
+   //
+   // Generate a Date String to output
+   //
+   var $now = new Date();
 
-	//
-	// Output the log message to the log window.
-	// In this case, we will insert it at the top of the list
-	// of existing elements in our DOM container.
-	//
-	// Get a list of all of the elements in the div
-	//
-	/*
-	var $contentToAppend = new Object('<p class="' + $logLevelName + '">' +
-		'DATE: ' + this.getDate() + ' ' +
-		'(' + this.getInstanceName() + ') ' +
-		'[' + $logLevelName + '] - ' +
-		logMessage +
-		'</p>');
-	var $elements = $logOutputDivRef.getElementsByTagName('p');
-	var $firstElement = $elements[0];
-	$logOutputDivRef.insertBefore($contentToAppend, $firstElement);
-	*/
+   //
+   // Output the log message to the log window.
+   // In this case, we will insert it at the top of the list
+   // of existing elements in our DOM container.
 
-	/*
-	var $newElem = document.createElement('p');
-	$newElem.className = $logLevelName;
-	$newElem.innerHTML = 'DATE: ' + this.getDate() + ' ' +
-		'(' + this.getInstanceName() + ') ' +
-		'[' + $logLevelName + '] - ' +
-		logMessage;
-	// $logOutputDivRef.insertBefore($newElem, $logOutputDivRef.firstChild);
-	$logOutputDivRef.insertBefore($newElem, ($logOutputDivRef.hasChildNodes()) ? $logOutputDivRef.childNodes[0]:'undefined');
+/*
+   var $contentToAppend = new Object('<p class="' + $logLevelName + '">' +
+      'DATE: ' + this.getDate() + ' ' +
+      '(' + this.getInstanceName() + ') ' +
+      '[' + $logLevelName + '] - ' +
+      logMessage +
+      '</p>');
+   var $elements = $logOutputDivRef.getElementsByTagName('p');
+   var $firstElement = $elements[0];
+   //$logOutputDivRef.insertBefore($contentToAppend, $firstElement);
+*/
+
+   // Create the <p> tag we will add to the output window
+   var $contentToAppend = $logOutputWindowRef.document.createElement('p');
+   $contentToAppend.setAttribute('class', $logLevelName);
+   $contentToAppend.innerHTML = '(' + this.getInstanceName() + ') ' +
+      '[' + $logLevelName + '] - ' +
+      logMessage; 
+
+
+   // Just appends at the end
+   // $logOutputDivRef.appendChild($contentToAppend);
+
+   //
+   // Get a list of all of the elements in the div
+   //
+   var $elements = $logOutputDivRef.getElementsByTagName('p');
+   var $firstElement = ($logOutputDivRef.hasChildNodes()) ? $elements[0] : null;
+   $logOutputDivRef.insertBefore($contentToAppend, $firstElement);
+
+   /*
+   var $newElem = document.createElement('p');
+   $newElem.className = $logLevelName;
+   $newElem.innerHTML = 'DATE: ' + this.getDate() + ' ' +
+      '(' + this.getInstanceName() + ') ' +
+      '[' + $logLevelName + '] - ' +
+      logMessage;
+   // $logOutputDivRef.insertBefore($newElem, $logOutputDivRef.firstChild);
+   $logOutputDivRef.insertBefore($newElem, ($logOutputDivRef.hasChildNodes()) ? $logOutputDivRef.childNodes[0]:'undefined');
 
 // LEFT OFF, still messed up in IE.
-	*/
 
-	$(eval($logOutputDivRef)).prepend(
-		'<p class="' + $logLevelName + '">' +
-		'DATE: ' + this.getDate() + ' ' +
-		'(' + this.getInstanceName() + ') ' +
-		'[' + $logLevelName + '] - ' +
-		logMessage +
-		'</p>');
+/*
+   $(eval($logOutputDivRef)).prepend(
+      '<p class="' + $logLevelName + '">' +
+      'DATE: ' + this.getDate() + ' ' +
+      '(' + this.getInstanceName() + ') ' +
+      '[' + $logLevelName + '] - ' +
+      logMessage +
+      '</p>');
+*/
 
 };
 
@@ -506,39 +500,37 @@ com.ryanchapin.logger.Logger.prototype.outputLogMessage = function(logMessage, l
 /**
  * Determines whether or not a given log output request should have it's message output
  *
- * @param	logMessage, String,
- * @param	logLevel, int,
+ * @param   logMessage, String,
+ * @param   logLevel, int,
  */
 com.ryanchapin.logger.Logger.prototype.logOutputRequest = function(logMessage, logLevel) {
-
-	if (this.shouldOutputLogMessage(logLevel)) {
-		this.outputLogMessage(logMessage, logLevel);
-	} 
-	
+   if (this.shouldOutputLogMessage(logLevel)) {
+      this.outputLogMessage(logMessage, logLevel);
+   } 
 };
 
 
 com.ryanchapin.logger.Logger.prototype.trace = function(logMessage) {
-	this.logOutputRequest(logMessage, this.logLevels.TRACE);
+   this.logOutputRequest(logMessage, this.logLevels.TRACE);
 };
 
 com.ryanchapin.logger.Logger.prototype.debug = function(logMessage) {
-	this.logOutputRequest(logMessage, this.logLevels.DEBUG);
+   this.logOutputRequest(logMessage, this.logLevels.DEBUG);
 };
 
 com.ryanchapin.logger.Logger.prototype.info= function(logMessage) {
-	this.logOutputRequest(logMessage, this.logLevels.INFO);
+   this.logOutputRequest(logMessage, this.logLevels.INFO);
 };
 
 com.ryanchapin.logger.Logger.prototype.warn = function(logMessage) {
-	this.logOutputRequest(logMessage, this.logLevels.WARN);
+   this.logOutputRequest(logMessage, this.logLevels.WARN);
 };
 
 com.ryanchapin.logger.Logger.prototype.error = function(logMessage) {
-	this.logOutputRequest(logMessage, this.logLevels.ERROR);
+   this.logOutputRequest(logMessage, this.logLevels.ERROR);
 };
 
 com.ryanchapin.logger.Logger.prototype.fatal = function(logMessage) {
-	this.logOutputRequest(logMessage, this.logLevels.FATAL);
+   this.logOutputRequest(logMessage, this.logLevels.FATAL);
 };
 
