@@ -32,7 +32,7 @@
 /*   SUCH DAMAGE.                                                     */
 /*                                                                    */
 /**********************************************************************/
-/*   version: 1.1                                                     */
+/*   version: 1.1.0.0                                                 */
 /**********************************************************************/
 
 /**
@@ -230,8 +230,6 @@ com.ryanchapin.logger.Logger.prototype.isLogOutputWindowOpen = function () {
 //
 
 /**
- * FIXME:  This is currently broken and does not work properly
- *
  * Will return the current version of IE.
  *
  * This is based on a script seen on Stack Overflow regarding object detection
@@ -241,28 +239,32 @@ com.ryanchapin.logger.Logger.prototype.isLogOutputWindowOpen = function () {
  *           browser, returns 0.
  */
 com.ryanchapin.logger.Logger.prototype.getIeVersion = function() {
+
+   var $version = 0;
    
-   if (typeof(this.ieVersion) !== 'undefined' && this.ieVersion === 0) {
-      return 0;
-   }
+   // The meta tag name we are looking for
+   var $meta_key = 'ie_version';
 
    if (typeof(this.ieVersion) === 'undefined' || this.ieVersion === null) {
-      var $version = 3;
-      var $div = document.createElement('div');
-      var $all = $div.getElementsByTagName('i');
-      var $continue = true;
+      // Get a reference to an array of all of the meta tags
+      var $metaTags = document.getElementsByTagName('meta');
+      var $value    = '';
+      var $key      = '';
 
-      while ($continue) {
-         $version++;
-         $div.innerHTML = '<!--[if gt IE ' + $version + ']><i></i><![endif]-->';
-         $all[0];
-
-         if ($div.innerHTML !== '' && $all[0] !== 'undefined') {
-            $continue = false;
+      // Loop through all of the meta elements and look for a meta tag with
+      // the name $meta_key (see definition above), if any.
+      for (i = 0; i < $metaTags.length; i++) {
+         $key = $metaTags[i].getAttribute('name');
+         if (undefined === $key || null === $key) {
+            continue;
          }
-
+         if ($key == $meta_key) {
+            $value = $metaTags[i].getAttribute('content');
+            $version = $value;
+            break;
+         }
       }
-      this.ieVersion = ($version > 4) ? $version : 0;
+      this.ieVersion = $version;
    }
    return this.ieVersion;
 };
@@ -354,8 +356,6 @@ com.ryanchapin.logger.Logger.prototype.isDebugEnabled = function () {
 
 com.ryanchapin.logger.Logger.prototype.openLogOutputWindow = function () {
 
-   this.getIeVersion();
-
    //
    // Make sure that we have not already opened a log output window
    //
@@ -366,7 +366,7 @@ com.ryanchapin.logger.Logger.prototype.openLogOutputWindow = function () {
       // of IE that we might be using.
       //
       var $ieVersion = this.getIeVersion();
-      var $windowName = $ieVersion > 0 ? '_blank' : this.getLogWindowName();
+      var $windowName = ($ieVersion == 0 || $ieVersion > 8) ? this.getLogWindowName() : '_blank';
 
       //
       // Open a new window if there is not already one with the

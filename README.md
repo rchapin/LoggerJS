@@ -6,12 +6,11 @@ An alternative to having to pick through each of the debugging utilities in each
 
 Currently, this library only supports desktop web browsers and printing logging messages to the screen.
 
+Works with **IE from 6 and up**.
+
 ## Features
 
 The Logger instance will open a new browser window and print the logging messages in reverse order (the most recent at the top of the window).  Multiple Logger instances will write to the same window in the order in which that they attempt to append their data to the DOM in an asynchronous fashion. In most browsers, multiple windows and tabs will write to the same pop-up/output window.
-
-## Requires
-* jQuery 1.7 or greater:  http://www.jquery.com/download/
 
 ## Usage
 
@@ -20,8 +19,17 @@ To utilize the Logger class:
 * Do a minor bit of tweaking to the browsers in your test bed:
 
 	- You must enable pop-ups in the browser, and/or for the domain on which you are developing.  **Safari** does not prompt you if you want to allow pop-ups, it just blocks them and the Logger fails silently.
-	- Yes **it does work with IE 6**.  The snippet of Javascript in the sample page that posts the form content to the Logger instance doesn't work in IE6.  Comment it out and you'll see.
 
+* Add the following set of conditional meta tags for IE
+```
+<!--[if lt IE 7 ]> <meta name="ie_version" content="6" /> <![endif]-->
+<!--[if IE 7 ]>    <meta name="ie_version" content="7" /> <![endif]-->
+<!--[if IE 8 ]>    <meta name="ie_version" content="8" /> <![endif]-->
+<!--[if IE 9 ]>    <meta name="ie_version" content="9" /> <![endif]-->
+<!--[if IE 9 ]>    <meta name="ie_version" content="10" /> <![endif]-->
+<!--[if IE 9 ]>    <meta name="ie_version" content="11" /> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><![endif]-->
+```
 
 * Declare a namespace object on your page (or in your top level js include) for the Logger object defintion:
 ```
@@ -56,36 +64,16 @@ And, assuming that `$foo == 'blah'`, and that you named the instance 'LoggerInst
 DATE: 2013-08-00 21:28:56:310 (LoggerInstanceName) [TRACE] - This is a message that I want to output for var $foo: blah
 ```
 
-
 ## Roadmap
 
-* Finish the jquery-less implementation to prepend the log messages to the DOM in the logger window.
- 
-* Decouple the output of the log messages so that I can write to either a browsers, file, web service, or socket.
+* Decouple the output of the log messages so that I can write to either a browser window, file, web service, socket, etc..
 
+* Refactor such that the same library will work on both desktop and mobile browsers
 
 ## Known Issues
 
 * Chrome will not write to the same pop-up window between different parent browser windows, or tabs.  Each tab, or window will write to it's own pop-up.
 
-
-License
--------
-
-This software is released under the Revised BSD License.
-
-Copyright (c) 2013, Ryan Chapin, http:www.ryanchapin.com	      
-All rights reserved.					      
-                                                                    
-Redistribution  and  use  in  source  and binary forms, with or without modification, are permitted provided that the following  
-conditions are met:					      
-                                                                    
-* Redistributions  of source code must retain the above copyright notice, this list of conditions and the following disclaimer.    
-
-* Redistributions   in  binary  form  must  reproduce  the  above copyright  notice,  this  list  of conditions and the following disclaimer in the documentation andor other materials provided with the distribution.					      
-* Neither   the  name  of  Ryan  Chapin  nor  the  names  of  its contributors may be used to endorse or promote products derived from this software without specific prior written permission.    
-                                                                    
-THIS   SOFTWARE  IS  PROVIDED  BY  THE  COPYRIGHT  HOLDERS  AND  CONTRIBUTORS  "AS  IS"  AND  ANY EXPRESS OR IMPLIED WARRANTIES,  INCLUDING,  BUT  NOT  LIMITED  TO,  THE  IMPLIED  WARRANTIES OF MERCHANTABILITY  AND  FITNESS  FOR  A  PARTICULAR  PURPOSE  ARE  DISCLAIMED.   IN   NO  EVENT  SHALL  RYAN  CHAPIN,  ANY  HEIRS, SUCCESSORS,  EXECUTORS ANDOR ASSIGNS BE LIABLE FOR ANY DIRECT, INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,  OR  CONSEQUENTIAL DAMAGES   (INCLUDING,   BUT  NOT  LIMITED  TO,  PROCUREMENT  OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS  INTERRUPTION)  HOWEVER  CAUSED  AND  ON ANY THEORY OF LIABILITY,  WHETHER  IN  CONTRACT,  STRICT  LIABILITY,  OR TORT (INCLUDING  NEGLIGENCE  OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Questions or Comments
 ---------------------
