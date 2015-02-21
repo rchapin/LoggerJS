@@ -48,7 +48,6 @@ com.ryanchapin.logger.Logger = function (instanceName) {
    // Set the logLevel to a default value
    //
    this.setLogLevel('DEBUG');
-
 };
 
 
@@ -437,23 +436,6 @@ com.ryanchapin.logger.Logger.prototype.outputLogMessage = function(logMessage, l
    //
    var $now = new Date();
 
-   //
-   // Output the log message to the log window.
-   // In this case, we will insert it at the top of the list
-   // of existing elements in our DOM container.
-
-/*
-   var $contentToAppend = new Object('<p class="' + $logLevelName + '">' +
-      'DATE: ' + this.getDate() + ' ' +
-      '(' + this.getInstanceName() + ') ' +
-      '[' + $logLevelName + '] - ' +
-      logMessage +
-      '</p>');
-   var $elements = $logOutputDivRef.getElementsByTagName('p');
-   var $firstElement = $elements[0];
-   //$logOutputDivRef.insertBefore($contentToAppend, $firstElement);
-*/
-
    // Create the <p> tag we will add to the output window
    var $contentToAppend = $logOutputWindowRef.document.createElement('p');
    $contentToAppend.setAttribute('class', $logLevelName);
@@ -461,39 +443,13 @@ com.ryanchapin.logger.Logger.prototype.outputLogMessage = function(logMessage, l
       '[' + $logLevelName + '] - ' +
       logMessage; 
 
-
-   // Just appends at the end
-   // $logOutputDivRef.appendChild($contentToAppend);
-
    //
-   // Get a list of all of the elements in the div
+   // Get a list of all of the elements in the div and append the
+   // new <p> tag at the top of the element list.
    //
    var $elements = $logOutputDivRef.getElementsByTagName('p');
    var $firstElement = ($logOutputDivRef.hasChildNodes()) ? $elements[0] : null;
    $logOutputDivRef.insertBefore($contentToAppend, $firstElement);
-
-   /*
-   var $newElem = document.createElement('p');
-   $newElem.className = $logLevelName;
-   $newElem.innerHTML = 'DATE: ' + this.getDate() + ' ' +
-      '(' + this.getInstanceName() + ') ' +
-      '[' + $logLevelName + '] - ' +
-      logMessage;
-   // $logOutputDivRef.insertBefore($newElem, $logOutputDivRef.firstChild);
-   $logOutputDivRef.insertBefore($newElem, ($logOutputDivRef.hasChildNodes()) ? $logOutputDivRef.childNodes[0]:'undefined');
-
-// LEFT OFF, still messed up in IE.
-
-/*
-   $(eval($logOutputDivRef)).prepend(
-      '<p class="' + $logLevelName + '">' +
-      'DATE: ' + this.getDate() + ' ' +
-      '(' + this.getInstanceName() + ') ' +
-      '[' + $logLevelName + '] - ' +
-      logMessage +
-      '</p>');
-*/
-
 };
 
 
